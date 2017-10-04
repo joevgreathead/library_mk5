@@ -66,6 +66,10 @@ footer {
     background: asset-url("pax_tabletop_tag_mk5.png") no-repeat;
 }
 
+.pax-fp-tag {
+    background: asset-url("pax_tabletop_freeplay_tag.png") no-repeat;
+}
+
 header[data-event="prime"], header[data-event="west"] {
     background-color: #009DDC;
     #logo {
