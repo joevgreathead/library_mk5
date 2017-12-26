@@ -114,6 +114,10 @@ class Event < ActiveRecord::Base
     self.end_date == Date.today
   end
 
+  def suggestions
+    Suggestion.where(event: self)
+  end
+
   def recent_event_summary
     where_clause = Event.three_events_ago ? "where e.id >= (#{Event.three_events_ago.id})" : ''
 
