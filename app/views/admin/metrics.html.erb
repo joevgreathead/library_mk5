@@ -24,8 +24,8 @@
 <%= render 'admin/metrics/games_tracking_summary' %>
 
 <div class="row" style="text-align: center;">
-    <div class="col-xs-12 btn-admin-container">
-        <%= render 'link', path: suggestions_path(event: Event.current), text: 'Suggestions', type: nil %>
+    <div class="col-xs-12">
+        <%= render 'link', path: suggestions_path(event: @event), text: 'Suggestions', type: nil %>
     </div>
 </div>
 

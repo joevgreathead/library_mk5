@@ -4,6 +4,8 @@
         &gt;
         <%= link_to 'Events', events_path %>
         &gt;
+        <%= link_to 'Metrics', metrics_path(@event) %>
+        &gt;
         Suggestions for <%= @event.name %>
     </div>
 </div>
@@ -19,19 +21,19 @@
 
 <table class="table">
     <tr>
-        <th class="col-xs-3">
+        <th class="col-xs-1" style="text-align: center;">
             Votes
         </th>
-        <th class="col-xs-3">
+        <th class="col-xs-12">
             Title
         </th>
     </tr>
-    <% @event.suggestions.each do |s| %>
+    <% @event.suggestions.by_votes.each do |s| %>
         <tr>
-            <td class="col-xs-3">
+            <td class="col-xs-1" style="text-align: center;">
                 <%= s.votes %>
             </td>
-            <td class="col-xs-3">
+            <td class="col-xs-12">
                 <%= s.title %>
             </td>
         </tr>
