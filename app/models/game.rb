@@ -8,6 +8,7 @@ class Game < ActiveRecord::Base
   has_many :loans
 
   belongs_to :title
+  has_one :publisher, through: :title
 
   before_create :format_member_variables
 
@@ -87,7 +88,8 @@ class Game < ActiveRecord::Base
     if Utilities.BARCODE_FORMAT.match(search) && !/[a-z]+/.match(search) && /\d+/.match(search)
       result = where(barcode: search.upcase)
     elsif search
-      result = where(title: Title.search(search))
+      search_query = "%#{search}%"
+      result = joins(:title).joins(:publisher).where('titles.title ILIKE ? OR publishers.name ILIKE ?', search_query, search_query)
     else
       result = where(nil)
     end
